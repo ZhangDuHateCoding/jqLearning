@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07过滤选择器</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <!-- 
+        常见过滤选择器
+        1. 选择第一个div
+        2. 选择最后一个class为box的元素
+        3. 选择所有class不为box的div
+        4. 选择第二个和第三个li元素
+        5. 选择内容为BBBB的li
+        6. 选择隐藏的li
+        7. 选择有title属性的li元素
+        8. 选择所有属性title为hello的元素
+     -->
+     <div id="div1" class="box">div1</div>
+     <div id="div2" class="box">div2</div>
+     <div id="div3">div3</div>
+     <span class="class">span</span><br>
+     <ul>
+         <li title="hello">AAAA</li>
+         <li title="hello">AAAA</li>
+         <li class="box">BBBB</li>
+         <li class="box">BBBB</li>
+         <li class="box">BBBB</li>
+         <li title="hello">CCCC</li>
+         <li title="two">DDDD</li>
+         <li style="display:none">我tm是隐藏的</li>
+     </ul>
+</body>
+<script type="text/javascript">
+        // 1. 选择第一个div
+        $("div:first").css({"color":"green"})
+        // 2. 选择最后一个class为box的元素
+        $(".box:last").css({"color":"yellow"})
+        // 3. 选择所有class不为box的div
+        $("div:not(.box)").css({"color":"red"}) //没有class属性也可以
+        // 4. 选择第二个和第三个li元素
+        $("li:gt(0):lt(2)").css({"color":"pink"}) // 多个过滤选择器不是同时执行的，是依次执行的
+        // 5. 选择内容为BBBB的li
+        $("li:contains('BBBB')").css({"background":"blue"})
+        // 6. 选择隐藏的li
+        $("li:hidden").css({"color":"red"})
+        console.log($('li:hidden').length, $('li:hidden')[0])
+        // 7. 选择有title属性的li元素
+        $("li[title]").css({"background":"gray"})
+        // 8. 选择所有属性title为hello的元素
+        $("li[title='hello']").css({"color":"silver"})
+</script>
+</html>

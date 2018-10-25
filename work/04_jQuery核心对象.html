@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04jQuery核心对象</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <!-- 
+        jQuery核心对象：是一个包含所有匹配任意多个DOM元素的为数组对象
+        -即执行jQuery核心函数返回的对象
+        -jQuery对象内部包含的是DOM元素对象的伪数组(可能只有一个元素)
+        -jQuery对象拥有很多有用的属性和方法，让程序员更方便的操作DOM
+
+        伪数组：是Object对象，具有length属性和数值下标属性
+        .属性/方法：
+        1. 基本行为
+            eg
+            size()/length：包含DOM元素个数
+            [index]/get(index)：得到对应位置的DOM元素
+            each()：遍历包含的所有DOM元素
+            index()：得到在所在兄弟元素中的下标
+        2. 属性
+        3. CSS
+        4. 文档
+        5. 筛选
+        6. 事件
+        7. 效果
+     -->
+     <!-- 
+         需求：
+         1. 统计一共多少按钮
+         2. 取出第二个button的文本
+         3. 输出所有button标签的文本
+         4. 输出‘测试三’按钮是所有按钮中的第几个
+      -->
+      <button>test1</button>
+      <button>test2</button>
+      <button id="btn3">test3</button>
+      <button>test4</button>
+</body>
+<script type="text/javascript">
+    $(function(){
+        // 1. 统计一共多少按钮
+        var $buttons = $('button'); //此时$buttons包含了所有button，是一个伪数组
+        console.log($buttons instanceof Array) //false
+        // console.log($buttons.size()) //jQuery 3.x removed this size function.
+        console.log($buttons.length);
+
+        //2. 取出第二个button的文本
+        console.log($buttons[1].innerHTML)
+        console.log($buttons.get(1).innerHTML)
+        // 3. 输出所有button标签的文本
+        console.log($buttons.each(function(index, domEle){ //index为伪数组下标，domEle为DOM元素和其中内容
+            console.log(index, domEle.innerHTML)
+            console.log(this)
+        }))
+        //4. 输出‘测试三’按钮是所有按钮中的第几个
+        console.log('这是第'+($("#btn3").index()+1)+'个元素')
+
+        //伪数组
+        var fakeArr = {}
+        fakeArr.length = 3
+        fakeArr[0] = 'aaa'
+        fakeArr[2] = 12
+        for (let i = 0; i < fakeArr.length; i++) {
+            const element = fakeArr[i];
+            console.log(element, i)
+            
+        }
+        //伪数组没有数组的行为，如forEach()，push()，splice()等方法无法使用
+        
+        
+    })
+</script>
+</html>

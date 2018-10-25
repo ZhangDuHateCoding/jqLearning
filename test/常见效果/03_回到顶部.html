@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>03_回到顶部</title>
+  <style>
+    #to_top {
+      width: 30px;
+      height: 30px;
+      position: fixed;
+      cursor: pointer;
+      right: 20px;
+      bottom: 20px;
+    }
+  </style>
+</head>
+<body style="height: 2000px;">
+<img id="to_top" src="top.png" alt="">
+
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  // 控制显示
+  if($(this).scrollTop() == 0){
+      $("#to_top").hide()
+  }
+  $(window).scroll(function(){
+    if($(this).scrollTop() < 600){
+      $("#to_top").hide(180)
+  }
+  if($(this).scrollTop() >= 600){
+      $("#to_top").show(180) // 显示时间
+  }
+  });
+
+  $("#to_top").click(function(){
+    // 瞬间回到顶部
+    // $("html, body").scrollTop(0)
+    // 平滑回到顶部 --- 需要滚动总距离、总时间、间隔时间
+    //总距离
+    var $page = $("html, body")
+    var distance = $("html").scrollTop() + $("body").scrollTop()
+    // 设置总时间
+    var time = 240
+    // 间隔时间
+    var intervalTime = 8
+    // 单位距离
+    var unitDistance = distance/(time/intervalTime)
+
+    
+    // 使用循环定时器不断滚动
+      var intervalId = setInterval(function(){
+      distance = distance - unitDistance
+      // 到达顶部时停止定时器
+      if(distance <= 0){
+        distance = 0
+        clearInterval(intervalId)
+      }
+      $page.scrollTop(distance)
+    }, intervalTime)
+    
+  })
+</script>
+</body>
+
+</html>

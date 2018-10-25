@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02两把利器</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <!-- 
+        1.jQuery核心函数：
+            简称$/jQuery
+            jQuery库向外暴露的就是$/jQuery
+            引入jQuery库后，直接使用$即可
+                当函数用：$(xxx)
+                当对象用：$.xxx()
+        2.jQuery核心对象：执行$()返回的对象
+            简称jQuery对象
+            执行jQuery函数返回的就是jQuery对象
+            使用：$obj.xxx()
+        
+     -->
+</body>
+<script type="text/javascript">
+    //test jQuery函数
+    console.log($)
+    console.log(typeof $)
+    console.log(typeof $ === typeof Object)
+    console.log(typeof Object)
+    console.log(jQuery === $)
+    console.log($())
+    console.log($() instanceof $)
+     //整体是一个匿名函数自调用
+     /*
+
+     (function(window){
+         var jQuery = function(){
+             return new xxx()
+         }
+         window.$ = window.jQuery = jQuery
+     })(window)
+
+     */
+
+     //执行jQuery函数得到jQuery对象，直接可用(因为jQuery已经向外暴露了接口)
+</script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02_多Tab点击切换</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #tab li {
+      float: left;
+      list-style: none;
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    #container {
+      position: relative;
+    }
+
+    #content1, #content2, #content3 {
+      width: 300px;
+      height: 100px;
+      padding: 30px;
+      position: absolute;
+      top: 40px;
+      left: 0;
+    }
+
+    #tab1, #content1 {
+      background-color: #ffcc00;
+    }
+
+    #tab2, #content2 {
+      background-color: #ff00cc;
+    }
+
+    #tab3, #content3 {
+      background-color: #00ccff;
+    }
+  </style>
+</head>
+<body>
+<h2>多Tab点击切换</h2>
+
+<ul id="tab">
+  <li id="tab1" value="1">10元套餐</li>
+  <li id="tab2" value="2">30元套餐</li>
+  <li id="tab3" value="3">50元包月</li>
+</ul>
+
+<div id="container">
+  <div id="content1">
+    10元套餐详情：<br/>&nbsp;每月套餐内拨打100分钟，超出部分2毛/分钟
+  </div>
+  <div id="content2" style="display: none">
+    30元套餐详情：<br/>&nbsp;每月套餐内拨打300分钟，超出部分1.5毛/分钟
+  </div>
+  <div id="content3" style="display: none">
+    50元包月详情：<br/>&nbsp;每月无限量随心打
+  </div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  // 2.得到当前显示的内容div的下标
+  var $contents = $("#container>div")
+  var currentIndex = 0 //初始化显示div
+  // 1. 给3个li添加监听
+  $("#tab>li").click(function(){ // 这种方法叫隐式遍历，一次把三个li都遍历完成
+    // alert("!!!")
+    // 3. 隐藏当前没有显示的div
+    $contents[currentIndex].style.display = "none"
+    // 4. 得到div下标，与li的下标绑定
+    var divIndex = $(this).index() // this指当前操作的DOM/jQuery对象，此处操作的是li，li和div下标对应
+    $contents[divIndex].style.display = "block" // 此时$contents是DOM对象而不是jQuery对象
+    //5. 更新下标
+    currentIndex = divIndex
+
+  })
+</script>
+</body>
+</html>

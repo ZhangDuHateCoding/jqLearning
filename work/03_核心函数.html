@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03核心函数</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <!-- 
+        需求
+        1. 点按钮，显示按钮的文本，显示一个新输入框
+        2. 遍历输出数组中所有元素
+        3. 去掉输入文字两端的空格
+     -->
+     <!-- 
+        $作为函数调用有4个不同的功能
+        1.参数为函数，绑定文档加载完成时的监听(当DOM加载完成后，执行此回调函数)
+        2.参数为选择器字符串：查找所有匹配的标签，并将其封装为jQuery对象，返回jQuery对象，且包含被封装的DOM
+        3.参数为DOM对象，将DOM对象封装成jQuery对象
+        4.参数为html标签字符串(用的少)：创建标签对象并封装成jQuery对象
+      -->
+
+     <div>
+         <button id="btn">test</button>
+         <br>
+         <input type="text" name="msg1">
+         <br>
+         <input type="text" name="msg2">
+         <br>
+     </div>
+     
+</body>
+<script type="text/javascript">
+    
+    $(function(){ //1. 参数为函数，绑定文档加载完成时的监听(当DOM加载完成后，执行此回调函数)
+        //2. 参数为选择器字符串：查找所有匹配的标签，并将其封装为jQuery对象，返回jQuery对象，且包含被封装的DOM
+        $("#btn") .click(function () { 
+            // this是什么？是当前发生事件的DOM元素，此处为<button></button>
+            // alert(this.innerHTML) // 3. 参数为DOM对象，将DOM对象封装成jQuery对象
+            //或
+            alert($(this).html()) // 此时html()中无参数，是读操作(jQuery读写合一)
+            // 4. 参数为html标签字符串(用的少)：创建标签对象并封装成jQuery对象
+            $('<input type="text" ><br/>').appendTo('div') //没有appendTo()只会存在内存中，使用该方法后才会渲染到页面上
+         })
+
+    })
+
+    //需求2 遍历输出数组中所有元素
+    var arr = [2, 4,7]
+    $.each(arr, function(index, item){ //index数组下标，item数组项的内容
+        console.log(index, item)
+    })
+
+    // 去掉输入文字两端的空格
+    var str = '   llll ddebj    '
+    console.log(str)
+    console.log($.trim(str))
+</script>
+</html>

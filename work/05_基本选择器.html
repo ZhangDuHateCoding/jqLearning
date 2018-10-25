@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05基本选择器</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <div id="div1">div1(class="box")</div>
+    <div id="div2">div2(class="box")</div>
+    <div id="div3">div3</div>
+
+    <span class="box">span(class="box")</span><br>
+
+    <ul>
+        <li>AAAA</li>
+        <li title="hello">BBBB(title="hello")</li>
+        <li class="box">CCCC(class="box")</li>
+        <li title="hello">BBBB(title="hello")</li>
+    </ul>
+</body>
+<script type="text/javascript">
+    // 选择id为div1的元素
+    $("#div1").css({"background":"red"})
+    // 选择所有div标签
+    $("div").css({"color":"blue"})
+    // 选择所有class为box的元素
+    $(".box").css({"fontSize":"24px"});
+    // 选择所有div和span元素
+    $('div,span').css("fontSize","10px")
+    // 选择所有class属性为box的div
+    $('.box.div').css({"background":"green"})
+</script>
+</html>

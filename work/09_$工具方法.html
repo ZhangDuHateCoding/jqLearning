@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09$工具方法</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <!-- 
+        1. $.each()：遍历数组或对象中的数据 第一个参数为被遍历的对象，第二个参数为函数
+        2. $.trim()：去除字符串两端的空格
+        3. $.type(obj)：得到数据的类型
+        4. $.isArray(obj)：判断是否为数组
+        5. $.isFunction(obj)：判断是否为函数
+        6. $.parseJSON(json)：解析json字符串转换为js对象/数组
+     -->
+</body>
+<script type="text/javascript">
+        // 1. $.each()：遍历数组或对象中的数据
+            var obj = {
+                name : "Tom",
+                setName: function(){
+                    this.name = name
+                }
+            }
+            $.each(obj, function(key, value){
+                console.log(key, value)
+            })
+        // 2. $.trim()：去除字符串两端的空格
+        // 3. $.type(obj)：得到数据的类型
+        console.log($.type($))
+        // 4. $.isArray(obj)：判断是否为数组
+        console.log($.isArray($("body")), $.isArray([]))
+        // 5. $.isFunction(obj)：判断是否为函数
+        console.log($.isFunction($))
+        // 6. $.parseJSON(json)：解析json字符串转换为js对象/数组
+        // json是特定语法格式的字符串，即一个json对象
+        /*
+            var json = '{"name":"Tom"}'  将json对象转换为js对象---parseJSON
+        */
+        var json = '{"name":"Tom", "age": 12}'
+        console.log($.parseJSON(json))
+        console.log(typeof(json))
+        console.log(typeof($.parseJSON(json)))
+        // 将json数组转换为js数组
+        json = '[{"name":"Tom", "age": 12}, {"name":"Jane", "age": 13}]' //json数组
+        console.log($.parseJSON(json))
+        console.log(typeof($.parseJSON(json)))
+        /*
+        JSON.stringify(jsObject/jsArray) js对象/数组转js字符串
+        JSON.parse(json) json字符串转js对象/数组
+        现在一般用这两种
+        */
+
+</script>
+</html>

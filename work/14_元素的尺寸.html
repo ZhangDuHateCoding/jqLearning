@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14元素的尺寸</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<style>
+    div{
+        width: 100px;
+        height: 150px;
+        background: red;
+        padding: 10px;
+        border: 10px solid blue;
+        margin: 10px;
+    }
+    
+</style>
+<body>
+    <div>Div</div>
+    <!-- 
+        1. 内容尺寸
+            height():height
+            width():width
+        2. 内部尺寸
+            innerHeight():height+padding
+            innerWidth():width+padding
+        3. 外部尺寸
+            outerHeight(false/true):height+padding+border, 如果是true，加上margin
+            outerWidth(false/true):width+padding+border, 如果是true，加上margin
+     -->
+</body>
+<script type="text/javascript">
+    //1. 内容尺寸：
+    console.log($("div").height(), $("div").width())
+    //2. 内部尺寸
+    console.log($("div").innerHeight(), $("div").innerWidth())
+    //3. 外部尺寸
+    console.log($("div").outerHeight(), $("div").outerWidth()) //默认不加margin，即false
+    console.log($("div").outerHeight(false), $("div").outerWidth(false))
+    console.log($("div").outerHeight(true), $("div").outerWidth(true))
+    var a;
+    console.log(a) // undefined
+    console.log(b) // Uncaught ReferenceError: b is not defined
+</script>
+</html>

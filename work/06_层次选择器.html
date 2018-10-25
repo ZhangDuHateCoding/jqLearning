@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06层次选择器</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <!-- 层次选择器：用来匹配子孙后代的选择器
+            1. ancestor空格decendent 在给定祖先元素下匹配所有后代元素
+            2. parent>child 在给定父元素下匹配所有子元素
+            3. prev+next  匹配所有紧接在prev元素后的next元素，只能匹配一个元素
+            4. prev~siblings 匹配prev元素之后的所有siblings元素
+    -->
+    <ul>
+        <li>AAAA</li>
+        <li class="box">BBBB</li>
+        <li title="hello"><span>CCCC</span></li>
+        <li title="hello"><span>DDDD</span></li>
+        <span>EEEE</span>
+    </ul>
+</body>
+<script type="text/javascript">
+    // 选中ul下全部span
+    $("ul span").css({"background":"yellow"})
+    // 选中ul下所有的子元素span
+    $("ul>span").css({"color":"blue"})
+    // 选中class为box的下一个li
+    $(".box+li").css({"color":"pink"})
+    // 选中ul下的class为box的元素后的全部兄弟元素
+    $("ul .box~*").css({"background":"orange"}) //*匹配全部，通配符
+</script>
+</html>

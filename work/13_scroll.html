@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13scroll</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body style="height:2000px">
+    <div style="border:1px solid black;width:100px;height:150px;overflow:auto">
+            This is some text. This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text. This is some text.
+            his is some text.
+    </div>
+    <br>
+    <br>
+    <br>
+    <button id="btn1">得到scrollTop</button>
+    <button id="btn2">设置scrollTop</button>
+    
+    <!--
+    1. scrollTop():
+    读取/设置滚动条的Y坐标
+    2. $(document.body).scrollTop()+$(document.documentElement).scrollTop()
+    读取页面滚动条的Y坐标(兼容chrome和IE)
+    3. $('body,html').scrollTop(60);
+    滚动到指定位置(兼容chrome和IE)
+    -->
+</body>
+<script type="text/javascript">
+    /*
+   需求:
+   1. 得到div或页面滚动条的坐标
+   2. 让div或页面的滚动条滚动到指定位置
+   */
+  //1. 得到div或页面滚动条的坐标
+  $("#btn1").click(function(){
+      var divScroll = $("div").scrollTop(); //得到div的Y轴滚动条坐标
+      console.log(divScroll)
+      var wholeScroll = $("html").scrollTop();// 得到整个页面的Y轴滚动条坐标
+      //兼容IE和Chrome
+      var scroll = $((document.documentElement).scrollTop + $(document.body).scrollTop()); // document.documentElement
+                                                                                        // 和document.documentElement
+                                                                                        // 即为html和body，这样运行更快，且兼容
+      console.log(scroll) 
+      
+      
+  })
+  
+  $("#btn2").click(function(){
+      // 2. 让div或页面的滚动条滚动到指定位置
+      $("div").scrollTop(300)
+      $("html, body").scrollTop(50)
+  })
+  
+  
+</script>
+</html>

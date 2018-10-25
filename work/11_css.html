@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+    <p style="color:blue">AAA</p>
+    <p style="color:green">BBB</p>
+</body>
+<script type="text/javascript">
+    //1. 得到第一个标签的颜色
+    //2. 设置所有p标签文本的颜色
+    //3. 制定第二个p标签样式
+    console.log($("p:first").css("color"))
+    $("p").css({"color":"red"})
+    $("P:eq(1)").css({
+        color:"pink",
+        background: "blue",
+        width:300,
+        height:30
+    })
+</script>
+</html>
